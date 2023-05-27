@@ -12,15 +12,7 @@ const botones = ['C', 'CE', '%', '/', '7', '8', '9', '*', '4', '5', '6', '-', '1
 //Inserto botones a calculadora y defino las clases para los diferentes botones
 botones.forEach(button => {
   const btn = document.createElement('button');
-  btn.textContent = button;
-  btn.addEventListener('click', hacerClick);
-  if (button === '=' || button === 'C' || button === 'CE') {
-    btn.classList.add('specialButton');
-  }else if (button === "%" || button === "/" || button === "*" || button === "-" || button === "+" || button === '!'){
-    btn.classList.add('operator')
-  }
-  calculadora.appendChild(btn);
-});
+
 
 // Agrego la calculadora a "app"
 const app = document.getElementById('app');
