@@ -7,34 +7,26 @@ salida.classList.add('output');
 salida.textContent = '0';
 calculadora.appendChild(salida);
 
-
 //Creo los botones
 const botones = ['C', 'CE', '%', '/', '7', '8', '9', '*', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '=', '!'];
 //Inserto botones a calculadora y defino las clases para los diferentes botones
 botones.forEach(button => {
   const btn = document.createElement('button');
-
+  btn.textContent = button;
+  btn.addEventListener('click', hacerClick);
+  if (button === '=' || button === 'C' || button === 'CE') {
+    btn.classList.add('specialButton');
+  }else if (button === "%" || button === "/" || button === "*" || button === "-" || button === "+" || button === '!'){
+    btn.classList.add('operator')
+  }
+  calculadora.appendChild(btn);
+});
 
 // Agrego la calculadora a "app"
 const app = document.getElementById('app');
 app.appendChild(calculadora);
 
 let operacionActual = '';
-
-// Crear el nuevo botón
-const switchThemeBtn = document.createElement('button');
-switchThemeBtn.textContent = 'B/W';
-switchThemeBtn.addEventListener('click', cambiarTema);
-switchThemeBtn.classList.add('switchThemeBtn');
-
-// Agregar el nuevo botón a la calculadora
-calculadora.appendChild(switchThemeBtn);
-
-function cambiarTema() {
-  document.body.classList.toggle('modo-oscuro');
-  calculadora.classList.toggle('modo-oscuro');
-}
-
 
 // Función para manejar los eventos de click en los botones
 function hacerClick(event) {
@@ -129,4 +121,3 @@ function limpiarEntrada() {
   salida.textContent = actualSalida.slice(0, -1);
   operacionActual = operacionActual.slice(0, -1);
 }
-
